@@ -17,23 +17,21 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {RentalScreen} from './screens';
 import {AuthScreen} from './screens';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <AuthScreen />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="User Login" component={AuthScreen} options = {{ headerShown: false}} />
+        <Stack.Screen name="Listings" component={RentalScreen} options = {{ headerShown: false}} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
